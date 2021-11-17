@@ -4,9 +4,9 @@
     "private": true,
     "scripts": {
         "fmt": "prettier --write .",
-        "dev": "esbuild src/index.js --bundle --watch --sourcemap --define:DEBUG=true --outfile=dist/bundle.js",
-        "build": "esbuild src/index.js --bundle --minify --define:DEBUG=false --outfile=dist/bundle.js",
-        "serve": "live-server dist --port=8000"
+        "dev": "esbuild src/index.js --bundle --watch --sourcemap --define:DEBUG=true --outfile=docs/bundle.js",
+        "build": "esbuild src/index.js --bundle --minify --define:DEBUG=false --outfile=docs/bundle.js",
+        "serve": "live-server docs --port=8000"
     },
     "devDependencies": {
         "esbuild": "^0.13.13",
