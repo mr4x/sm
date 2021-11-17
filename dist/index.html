@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width,initial-scale=1" name="viewport" />
+        <title>Лабораторная работа №5</title>
+        <link rel="preload" href="/fonts/72-Regular.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="preload" href="/fonts/72-Bold.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="icon" type="image/png" href="/icon-32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="/icon-16.png" sizes="16x16" />
+        <style>
+            @font-face {
+                font-family: '72';
+                font-style: normal;
+                font-weight: 700;
+                src: url('/fonts/72-Bold.woff2') format('woff2'), url('/fonts/72-Bold.woff') format('woff');
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: '72';
+                font-style: normal;
+                font-weight: 400;
+                src: url('/fonts/72-Regular.woff2') format('woff2'), url('/fonts/72-Regular.woff') format('woff');
+                font-display: swap;
+            }
+            
+            body {
+                font: 14px/1.5 '72', sans-serif;
+            }
+            .r,
+            .g,
+            .b {
+                font-weight: 700;
+            }
+            .r {
+                color: rgba(255, 65, 54, 0.8);
+            }
+            .g {
+                color: rgba(46, 204, 64, 0.8);
+            }
+            .b {
+                color: rgba(0, 116, 217, 0.8);
+            }
+            .gold {
+                color: #ea0;
+            }
+            .purple {
+                color: #636;
+            }
+            canvas {
+                border: 1px dashed;
+            }
+            table {
+                font-size: 12px;
+                border-collapse: collapse;
+            }
+            th,
+            td {
+                border: 1px solid #000;
+                text-align: center;
+                padding: 2px 4px;
+            }
+            body {
+                display: flex;
+                align-items: flex-start;
+            }
+            .controls {
+                margin-right: 16px;
+            }
+            #variant {
+                margin-bottom: 8px;
+            }
+            .caption {
+                text-align: center;
+            }
+            .mb-8 {
+                margin-bottom: 8px;
+            }
+            .plots {
+                display: flex;
+            }
+            .plot + .plot {
+                margin-left: 16px;
+            }
+            .result {
+                font-weight: 700;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="controls">
+            <select id="variant">
+                <option value="1">Вариант 1</option>
+                <option value="2">Вариант 2</option>
+                <option value="3">Вариант 3</option>
+                <option value="4">Вариант 4</option>
+                <option value="5">Вариант 5</option>
+                <option value="6">Вариант 6</option>
+                <option value="7">Вариант 7</option>
+                <option value="8">Вариант 8</option>
+                <option value="9">Вариант 9</option>
+                <option value="10">Вариант 10</option>
+                <option value="11">Вариант 11</option>
+            </select>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>X1</th>
+                        <th>X2</th>
+                        <th>Y</th>
+                        <th>Z</th>
+                    </tr>
+                </thead>
+                <tbody class="initialtable"></tbody>
+            </table>
+        </div>
+        <div class="solution">
+            <div class="mb-8">Оси: <span class="r">X</span> <span class="g">Y</span> <span class="b">Z</span></div>
+            <div class="plots">
+                <div class="plot">
+                    <canvas class="pointcloud" width="400" height="800"></canvas>
+                    <div class="caption">Изначальные данные</div>
+                </div>
+                <div class="plot">
+                    <canvas class="solved" width="800" height="800"></canvas>
+                    <div class="caption">Результат вычислений</div>
+                </div>
+            </div>
+            <div class="result">
+                Ответ
+                <div class="gold"></div>
+                <div class="purple"></div>
+            </div>
+        </div>
+        <script src="/bundle.js"></script>
+    </body>
+</html>
