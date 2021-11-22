@@ -206,27 +206,44 @@ function computeVariant(vi) {
         const x = data.x1[i];
         const z = data.x2[i];
 
-        const y = +(z * Ry[0] + x * Ry[1] + Ry[2]).toFixed(precision);
-
+        let y = +(z * Ry[0] + x * Ry[1] + Ry[2]).toFixed(precision);
         solvedY.push({ x, y, z });
-    }
 
-    for (let i = 0; i < n; i++) {
-        const x = data.x1[i];
-        const z = data.x2[i];
-
-        const y = +(z * Rz[0] + x * Rz[1] + Rz[2]).toFixed(precision);
-
+        y = +(z * Rz[0] + x * Rz[1] + Rz[2]).toFixed(precision);
         solvedZ.push({ x, y, z });
     }
 
-    const solved = drawPlot('.solved', [
+    drawPlot('.solved', [
         {
             points: solvedY,
             color: COLOR_PURPLE,
         },
         {
             points: solvedZ,
+            color: COLOR_GOLD,
+        },
+    ]);
+
+    const surfaceY = [];
+    const surfaceZ = [];
+
+    for (let x = -1; x < 3; x += 0.2) {
+        for (let z = -1; z < 3; z += 0.2) {
+            let y = +(z * Ry[0] + x * Ry[1] + Ry[2]).toFixed(precision);
+            surfaceY.push({ x, y, z });
+
+            y = +(z * Rz[0] + x * Rz[1] + Rz[2]).toFixed(precision);
+            surfaceZ.push({ x, y, z });
+        }
+    }
+
+    const solved = drawPlot('.surfaces', [
+        {
+            points: surfaceY,
+            color: COLOR_PURPLE,
+        },
+        {
+            points: surfaceZ,
             color: COLOR_GOLD,
         },
     ]);
